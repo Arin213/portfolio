@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= typeof title !=='undefined' ? title : 'My Resume' %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <!-- custom cursor (shared on every page) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <main class="card">
+        <header class="topbar">
+            <h2 class="brand">Limbu Anil</h2>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/resume">Resume</a>
+                <a href="/projects">Projects</a>
+                <a href="/skills">Skills</a>
+                <a href="/hobbies">Hobbies</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </header>

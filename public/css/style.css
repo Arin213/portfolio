@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --page-bg: #2EC4B6;
+  --card-bg: #FFFFFF;
+  --ink: #1A1A2E;
+  --muted: #555;
+  --accent: #2EC4B6;
+  --accent-2: #1B9E92;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: var(--page-bg);
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 0;
+  min-height: 100vh;
+  transition: background .5s ease, color .5s ease;
+}
+
+/* Dark mode for subpages */
+body.dark {
+  --page-bg: #102a28;
+  --card-bg: #1c2b2a;
+  --ink: #f0f0f5;
+  --muted: #b5b5c5;
+  --accent: #2EC4B6;
+  --accent-2: #1B9E92;
+}
+
+body.dark .card {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 40px 80px -20px rgba(46, 196, 182, 0.25);
+}
+
+body.dark .topbar {
+  border-bottom-color: #33334d;
+}
+
+body.dark nav a {
+  color: var(--ink);
+}
+
+body.dark footer {
+  color: var(--muted);
+  border-top-color: #33334d;
+}
+
+.card {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 40px 80px -20px rgba(46, 196, 182, 0.35);
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 36px;
+  border-bottom: 3px solid var(--page-bg);
+}
+
+.brand {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+
+nav {
+  display: flex;
+  gap: 26px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width .25s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+  padding: 36px;
+  align-items: flex-start;
+}
+
+.text-col {
+  flex: 1 1 auto;
+}
+
+.photo-col {
+  flex: 0 0 260px;
+  background: var(--page-bg);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.photo-col img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 22px 0 8px;
+  color: var(--accent);
+}
+
+h1:first-child {
+  margin-top: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 14px 0;
+}
+
+ul,
+ol {
+  margin-left: 22px;
+}
+
+footer {
+  padding: 18px 36px;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid #eee;
+  font-size: .9rem;
+}
+
+@media (max-width: 720px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .photo-col {
+    align-self: center;
+    flex-basis: auto;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* ---- Flat name card ---- */
+.name-card {
+  background: var(--card-bg);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin: 28px 36px 0;
+  display: inline-block;
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.name-card h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--ink);
+  letter-spacing: .5px;
+}
+
+.name-card .wave {
+  display: inline-block;
+  animation: wave 1.6s ease-in-out infinite;
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(14deg);
+  }
+
+  75% {
+    transform: rotate(-8deg);
+  }
+}
+
+/* ---- Collapsible (accordion) summary ---- */
+.accordion {
+  margin: 24px 36px 0;
+}
+
+.accordion-item {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: none;
+  padding: 14px 18px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header:hover {
+  background: #fff8ef;
+}
+
+.accordion-header .chevron {
+  transition: transform .25s ease;
+  color: var(--accent);
+}
+
+.accordion-header[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+  padding: 0 18px;
+}
+
+.accordion-body.open {
+  padding: 0 18px 16px;
+}
+
+.accordion-body p,
+.accordion-body ul,
+.accordion-body ol {
+  margin-top: 10px;
+}
+
+/* ---- Overflowing photo panel ---- */
+.photo-col {
+  flex: 0 0 260px;
+  background: var(--page-bg);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -40px;
+  /* pull up so it overflows the card top */
+  margin-right: -10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.photo-col img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Resume page ---- */
+.resume-section {
+  margin-bottom: 26px;
+}
