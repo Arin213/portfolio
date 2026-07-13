@@ -118,8 +118,6 @@ Every `git push` to GitHub triggers a new deploy automatically. To add a project
 
 > **Free-tier note:** the service sleeps after ~15 min of inactivity; the first visit after sleep takes ~30–60s to wake up.
 
-### Secrets
-Never commit secrets. Store any API keys or credentials in a `.env` file (already git-ignored) and add them as **Environment Variables** in the Render dashboard. See `.gitignore` for the full list of excluded files.
 
 ## License
 
