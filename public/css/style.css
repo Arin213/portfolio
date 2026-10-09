@@ -116,23 +116,6 @@ nav a:hover::after {
   flex: 1 1 auto;
 }
 
-.photo-col {
-  flex: 0 0 260px;
-  background: var(--page-bg);
-  border-radius: 14px;
-  padding: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.photo-col img {
-  width: 100%;
-  max-width: 220px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
 h1 {
   font-size: 1.25rem;
   margin: 22px 0 8px;
@@ -164,12 +147,7 @@ footer {
 
 @media (max-width: 720px) {
   .content {
-    flex-direction: column-reverse;
-  }
-
-  .photo-col {
-    align-self: center;
-    flex-basis: auto;
+    flex-direction: column;
   }
 
   .topbar {
@@ -179,125 +157,207 @@ footer {
   }
 }
 
-/* ---- Flat name card ---- */
-.name-card {
-  background: var(--card-bg);
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  padding: 18px 24px;
-  margin: 28px 36px 0;
-  display: inline-block;
-  box-shadow: 6px 6px 0 var(--accent);
-}
-
-.name-card h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: var(--ink);
-  letter-spacing: .5px;
-}
-
-.name-card .wave {
-  display: inline-block;
-  animation: wave 1.6s ease-in-out infinite;
-}
-
-@keyframes wave {
-
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(14deg);
-  }
-
-  75% {
-    transform: rotate(-8deg);
-  }
-}
-
-/* ---- Collapsible (accordion) summary ---- */
-.accordion {
-  margin: 24px 36px 0;
-}
-
-.accordion-item {
-  border: 1px solid #eee;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  overflow: hidden;
-}
-
-.accordion-header {
-  width: 100%;
-  text-align: left;
-  background: #fff;
-  border: none;
-  padding: 14px 18px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--ink);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.accordion-header:hover {
-  background: #fff8ef;
-}
-
-.accordion-header .chevron {
-  transition: transform .25s ease;
-  color: var(--accent);
-}
-
-.accordion-header[aria-expanded="true"] .chevron {
-  transform: rotate(180deg);
-}
-
-.accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .3s ease;
-  padding: 0 18px;
-}
-
-.accordion-body.open {
-  padding: 0 18px 16px;
-}
-
-.accordion-body p,
-.accordion-body ul,
-.accordion-body ol {
-  margin-top: 10px;
-}
-
-/* ---- Overflowing photo panel ---- */
-.photo-col {
-  flex: 0 0 260px;
-  background: var(--page-bg);
-  border-radius: 14px;
-  padding: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: -40px;
-  /* pull up so it overflows the card top */
-  margin-right: -10px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-}
-
-.photo-col img {
-  width: 100%;
-  max-width: 220px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
 /* ---- Resume page ---- */
 .resume-section {
   margin-bottom: 26px;
+}
+
+/* ---- Projects page ---- */
+.project-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.project {
+  background: var(--card-bg);
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.project:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .35);
+}
+
+.project-title {
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.project-desc {
+  color: var(--muted);
+}
+
+.project-tech {
+  list-style: none;
+  margin: 14px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tech li {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .3px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: var(--accent-2);
+  background: rgba(46, 196, 182, .12);
+  border: 1px solid rgba(46, 196, 182, .35);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+  color: var(--accent-2);
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+
+.project-link:hover {
+  background: var(--accent);
+  color: #10241f;
+  transform: translateY(-2px);
+}
+
+.project-link svg {
+  flex: 0 0 auto;
+}
+
+body.dark .project {
+  border-color: #33334d;
+}
+
+body.dark .project-tech li {
+  color: var(--accent);
+}
+
+body.dark .project-link {
+  color: var(--accent);
+}
+
+body.dark .project-link:hover {
+  color: #10241f;
+}
+
+@media (max-width: 720px) {
+  .project-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-link {
+    justify-content: center;
+  }
+}
+
+/* ---- Contact page ---- */
+.contact-list {
+  list-style: none;
+  margin: 18px 0 26px;
+  padding: 0;
+}
+
+.contact-list li {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+.contact-list a {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.contact-form {
+  max-width: 520px;
+  padding: 22px;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  background: var(--card-bg);
+}
+
+.contact-form h2 {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.form-hint {
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.contact-form label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, .25);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-status {
+  min-height: 1.2em;
+  font-size: .85rem;
+  color: var(--accent-2);
+  margin-bottom: 12px;
+}
+
+body.dark .contact-form {
+  border-color: #33334d;
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  border-color: #3d3d55;
+}
+
+body.dark .contact-list a,
+body.dark .form-status {
+  color: var(--accent);
 }

@@ -1,28 +1,18 @@
-// Smooth scroll (Lenis)
-const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
-function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
+// Landing page behaviour: smooth scroll, ripple, parallax and GSAP reveals.
+// Every enhancement here is optional — if a CDN asset fails to load, the page
+// must still be fully visible and usable.
 
-// Custom cursor with trailing ring
-const dot = document.querySelector('.cursor-dot');
-const ring = document.querySelector('.cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-window.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-});
-function trail() {
-  rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(trail);
+const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+const hasLenis = typeof Lenis !== 'undefined';
+
+// ---- Smooth scroll (Lenis) ----
+if (hasLenis) {
+  const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+  const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
 }
-trail();
-document.querySelectorAll('a, button, .btn').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-});
 
-// Ripple on buttons
+// ---- Ripple on buttons ----
 document.querySelectorAll('.btn').forEach(b => {
   b.addEventListener('click', e => {
     const r = document.createElement('span');
@@ -36,16 +26,22 @@ document.querySelectorAll('.btn').forEach(b => {
   });
 });
 
-// Hero image parallax
+// ---- Hero image parallax ----
 const photo = document.querySelector('.hero-photo');
-window.addEventListener('mousemove', e => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 24;
-  const y = (e.clientY / window.innerHeight - 0.5) * 24;
-  if (photo) photo.style.transform = `translate(${x}px, ${y}px) rotate(${x * 0.05}deg)`;
-});
+if (photo) {
+  window.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 24;
+    const y = (e.clientY / window.innerHeight - 0.5) * 24;
+    photo.style.transform = `translate(${x}px, ${y}px) rotate(${x * 0.05}deg)`;
+  });
+}
 
-// GSAP load + scroll animations
-window.addEventListener('load', () => {
+if (hasGsap) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Intro animation. Runs as soon as the DOM is parsed (this script is at the
+  // end of <body>) instead of waiting for window.load, so the card is never
+  // left invisible while a slow image or font is still downloading.
   gsap.to('.landing-card', { opacity: 1, scale: 1, duration: 0.8, ease: 'expo.out' });
   gsap.from('.hero-title .line', { yPercent: 120, opacity: 0, duration: 0.9, stagger: 0.15, ease: 'expo.out', delay: 0.3 });
   gsap.from('.eyebrow', { y: 20, opacity: 0, duration: 0.6, delay: 0.2 });
@@ -71,4 +67,16 @@ window.addEventListener('load', () => {
       scrollTrigger: { trigger: el, start: 'top 85%' }
     });
   });
-});
+} else {
+  // GSAP missing/blocked: undo the CSS "hidden until animated" states so the
+  // landing page is still readable.
+  const card = document.querySelector('.landing-card');
+  if (card) {
+    card.style.opacity = '1';
+    card.style.transform = 'none';
+  }
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}

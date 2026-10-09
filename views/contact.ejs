@@ -2,10 +2,39 @@
 
     <div class="content">
         <div class="text-col">
-            <h2>Address:</h2>
-            <p>Kathmandu, Nepal</p>
-            <p>Email: unsung.apricity01@gmail.com </p>
+            <h1>Contact:</h1>
+            <p>Based in Kathmandu, Nepal. Email is the fastest way to reach me.</p>
+
+            <ul class="contact-list">
+                <li><b>Email:</b> <a href="mailto:unsung.apricity01@gmail.com">unsung.apricity01@gmail.com</a></li>
+                <li><b>GitHub:</b> <a href="https://github.com/Arin213" target="_blank"
+                        rel="noopener noreferrer">github.com/Arin213</a></li>
+                <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/arin-limbu-a99674220/" target="_blank"
+                        rel="noopener noreferrer">linkedin.com/in/arin-limbu-a99674220</a></li>
+            </ul>
+
+            <form id="contact-form" class="contact-form" novalidate>
+                <h2>Send me a message</h2>
+                <p class="form-hint">
+                    This form composes the message in your own email app — nothing is stored on this site.
+                </p>
+
+                <label for="cf-name">Your name</label>
+                <input id="cf-name" name="name" type="text" maxlength="80" autocomplete="name" required />
+
+                <label for="cf-email">Your email</label>
+                <input id="cf-email" name="email" type="email" maxlength="120" autocomplete="email" required />
+
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="6" maxlength="2000" required></textarea>
+
+                <p id="cf-status" class="form-status" role="status" aria-live="polite"></p>
+
+                <button type="submit" class="btn btn-primary">Open email app</button>
+            </form>
         </div>
     </div>
+
+    <script src="/js/contact.js"></script>
 
 <%- include('partials/footer') %>

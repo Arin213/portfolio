@@ -1,71 +1,7 @@
 </main>
 
-<!-- premium footer (shared on every page) -->
-<link rel="stylesheet" href="/css/landing.css" />
-<footer class="site-footer">
-    <div class="footer-blob fb1"></div>
-    <div class="footer-blob fb2"></div>
-    <svg class="footer-wave" viewBox="0 0 1200 40" preserveAspectRatio="none">
-        <defs>
-            <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#2EC4B6" />
-                <stop offset="50%" stop-color="#1B9E92" />
-                <stop offset="100%" stop-color="#2EC4B6" />
-            </linearGradient>
-        </defs>
-        <path d="M0,20 C200,40 400,0 600,20 C800,40 1000,0 1200,20" />
-    </svg>
+<%- include('siteFooter') %>
 
-    <div class="footer-grid">
-        <div>
-            <div class="footer-logo">Anil<span>.</span></div>
-            <p class="footer-tag">Web Developer &amp; developer building calm, premium web experiences.</p>
-            <div class="socials">
-                <a href="https://github.com/Arin213" aria-label="GitHub"><img src="/svg/github.svg" alt="GitHub"
-                        width="20" height="20"></a>
-                <a href="https://linkedin.com" aria-label="LinkedIn"><img src="/svg/linkedin.svg" alt="LinkedIn"
-                        width="20" height="20"></a>
-                <a href="mailto:unsung.apricity01@gmail.com" aria-label="Email"><img src="/svg/email.svg" alt="Email"
-                        width="20" height="20"></a>
-            </div>
-        </div>
-        <div>
-            <h4>Explore</h4><a href="/">About</a><a href="/resume">Resume</a><a href="/projects">Projects</a>
-        </div>
-        <div>
-            <h4>More</h4><a href="/contact">Contact</a><a href="/skills">Skills</a><a href="/hobbies">Hobbies</a>
-        </div>
-        <div>
-            <h4>Connect</h4>
-            <a href="mailto:unsung.apricity01@gmail.com" aria-label="Email"><img src="/svg/email.svg" alt="Email"
-                    width="20" height="20"></a>
-            <a href="https://linkedin.com" aria-label="LinkedIn"><img src="/svg/linkedin.svg" alt="LinkedIn" width="20"
-                    height="20"></a>
-            <a href="https://github.com/Arin213" aria-label="GitHub"><img src="/svg/github.svg" alt="GitHub" width="20"
-                    height="20"></a>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <span>© 2026 Anil Limbu. All rights reserved.</span>
-        <button class="contact-pulse" onclick="location.href='/contact'">Get in touch</button>
-    </div>
-</footer>
-
-<script>
-    function toggleAccordion(btn) {
-        const body = btn.nextElementSibling;
-        const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!isOpen));
-        if (isOpen) {
-            body.style.maxHeight = null;
-            body.classList.remove('open');
-        } else {
-            body.classList.add('open');
-            body.style.maxHeight = body.scrollHeight + 'px';
-        }
-    }
-</script>
 <script src="/js/cursor.js"></script>
 <script src="/js/theme.js"></script>
 </body>

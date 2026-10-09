@@ -7,7 +7,24 @@
     <title>
         <%= typeof title !=='undefined' ? title : 'My Resume' %>
     </title>
+    <meta name="description"
+        content="Portfolio of Anil Limbu — web developer working with JavaScript, React, Node.js and Express." />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232EC4B6'/><text x='32' y='46' font-family='Arial,Helvetica,sans-serif' font-size='38' font-weight='bold' fill='%23ffffff' text-anchor='middle'>A</text></svg>" />
+
+    <!-- Link previews (LinkedIn, WhatsApp, Slack, X…) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anil Limbu" />
+    <meta property="og:title"
+        content="<%= typeof title !== 'undefined' ? title + ' — Anil Limbu' : 'Anil Limbu — Web Developer' %>" />
+    <meta property="og:description"
+        content="Portfolio of Anil Limbu — web developer working with JavaScript, React, Node.js and Express." />
+    <meta property="og:image" content="https://portfolio-02lz.onrender.com/photo.jpg" />
+    <meta property="og:image:alt" content="Anil Limbu" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/landing.css" />
 </head>
 
 <body>
@@ -26,5 +43,6 @@
                 <a href="/hobbies">Hobbies</a>
                 <a href="/contact">Contact</a>
             </nav>
-            <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+            <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false"
+                title="Switch to dark mode">🌙</button>
         </header>
